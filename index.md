@@ -1,4 +1,4 @@
-# Your Name
+# Housten Clark
 Data Science Student  
 UNC Charlotte
 ## About Me
