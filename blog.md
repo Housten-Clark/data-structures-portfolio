@@ -1,5 +1,5 @@
 # Blog
 I plan on posting things I am interested in about the sports analytics world
 ## Blog 1
-Coming soon.
+Data science is a very interesting field to me. There are so many areas where people can find a place they enjoy and love to work and are passionate about. Me, for example, I love sports. And I can become a sports analyst one day. Turning raw numbers into visual and usable data to help win games. Being able to work in sports with statistics is something I am so excited to do. But there are some scary areas involved with data collection. As data scientists we must be responsible with the data we collect. In the sports world we could collect all types of data outside the game. Like the players diet, sleep and drinking habits. These are pretty personal to the players and should not be shared out with other parties looking to do nefarious things with them. This data can be used to see an impact on the players performance for us, but could be used negatively for others. Which is why as data scientists we have to be covert, and careful with the data we collect. 
 
