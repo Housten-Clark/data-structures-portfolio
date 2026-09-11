@@ -10,9 +10,9 @@ Email: hclark44@charlotte.edu
 
 Phone: tbd 
 
-Github: Housten-Clark 
+Github: [Housten-Clark](https://github.com/Housten-Clark)
 
-LinkedIn: [Clickable Text](https://www.linkedin.com/in/housten-clark-894667333/) 
+[Linked in](https://www.linkedin.com/in/housten-clark-894667333/) 
 
 ## Portfolio
 - [Blog](blog.md)
