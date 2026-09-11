@@ -7,10 +7,10 @@ I am a Sports analytics student at the University of North Carolina at Charlotte
 ---
 
 # Contact me
-Email: hclark44@charlotte.edu
-Phone: tbd
-Github: Housten-Clark
-LinkedIn: https://www.linkedin.com/in/housten-clark-894667333/ 
+Email: hclark44@charlotte.edu ---
+Phone: tbd ---
+Github: Housten-Clark ---
+LinkedIn: https://www.linkedin.com/in/housten-clark-894667333/ ---
 ## Portfolio
 - [Blog](blog.md)
 - [Projects](projects.md)
