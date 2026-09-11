@@ -1,6 +1,6 @@
 # Projects
-When I actually lock in on personal projects I'll post stuff here
----
+These are all my projects, I plan on posting some passion projects, and larger school projects here
+
+
 ## Project 1
-Coming soon.
 
