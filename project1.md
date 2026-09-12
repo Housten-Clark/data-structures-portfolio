@@ -88,6 +88,13 @@ The visual analysis of our bunting data shows that bunting may have a slight neg
 **Limitations, ethics, and final closing thoughts**  
 Being limited by time constrained me to not downloading every regular season for this project as well. Leaving my laptop running for 15 hours straight did not seem like the best idea, however I feel it is safe to assume that my results would have been similar, despite only having post season games. One of my favorite things about this project was learning about trends in the MLB. How bunting has been on the decline, how pitchers used to bunt extremely often, and how there are scenarios where bunting could be useful. Ethically, I do not know how much of a gray line using the GitHub wrapper was for this project. Technically I am supposed to be affiliated with an MLB or minor league team to have access to this data. But this wrapper has allowed me to use it and conduct projects of my own. Overall I am very proud of my very first data science focused project, and I am excited for the future.   
 
-AI DISCLAMER: To be transparent, I used Claude to write the code for creating my dataframe. It pulled the data from the api and put them into a csv for me. However the graphs are my own.
+AI DISCLAMER: To be transparent, I used Claude to write the code for creating my dataframe. It pulled the data from the api and put them into a csv for me. However the graphs are my own.  
+
+    References
+[GitHub MLB API wrapper](https://github.com/toddrob99/MLB-StatsAPI)
+[Baseball Reference](https://www.baseball-reference.com/)
+
+    Code repository
+
 
 
