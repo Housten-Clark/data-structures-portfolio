@@ -82,4 +82,12 @@ This graph shows that bunting actually can help score runs in the right scenario
 
 These final two graphs demonstrate the differences in WPA between bunting and not bunting. Ignoring the obvious outliers with very small samples, the most notable square is the runners on first and second with no outs. Bunting increase a teams WPA very very slightly. Where as hitting decreases the WPA very slightly. We continue to see the double play trend with the 1 out runner on first for bunting, as it decreases the WPA. 
 
+**Story and interpretation**  
+The visual analysis of our bunting data shows that bunting may have a slight negative impact on games. But I believe that there is not enough evidence to show that bunting will help MLB teams increase their WPA. It seems bunting is only useful, from the data I have, in one specific scenario. Runners on first and second with no outs. Mostly in later inning, close scored games. As the "27 out clock" is shortened in the 7th, 8th, and 9th innings. Meaning sacrificing an out this late into the game could be worth it as your opponent has less time to catch up. Overall, I wished I could pull a larger sample to test with. The ~780 bunts I had to work with were enough to make a claim, but I could have missed out on some trends from the regular season.  
+
+**Limitations, ethics, and final closing thoughts**  
+Being limited by time constrained me to not downloading every regular season for this project as well. Leaving my laptop running for 15 hours straight did not seem like the best idea, however I feel it is safe to assume that my results would have been similar, despite only having post season games. One of my favorite things about this project was learning about trends in the MLB. How bunting has been on the decline, how pitchers used to bunt extremely often, and how there are scenarios where bunting could be useful. Ethically, I do not know how much of a gray line using the GitHub wrapper was for this project. Technically I am supposed to be affiliated with an MLB or minor league team to have access to this data. But this wrapper has allowed me to use it and conduct projects of my own. Overall I am very proud of my very first data science focused project, and I am excited for the future.   
+
+AI DISCLAMER: To be transparent, I used Claude to write the code for creating my dataframe. It pulled the data from the api and put them into a csv for me. However the graphs are my own.
+
 
