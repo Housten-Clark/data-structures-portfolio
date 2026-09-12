@@ -58,9 +58,19 @@ As we can see there is a decline in bunting over the past 20 years of playoff ga
 <p align="center" style="text-align:center;">  
     <img width="571" height="432" alt="image" src="https://github.com/user-attachments/assets/aaa3c6ac-c827-4359-bba4-b8b1a23a3476" />
 </p>  
-The next graph is to show bunts by inning. This gives a feel of when bunting is most common for players. I initially expected it to be very populated at the 7-9th inning mark. However there is a very notable spike in the 3rd inning. This is due to the National League requiring pitchers to hit pre 2022. And as stated before, pitchers bunted way more than other players. They were at the bottom of the line up which would come around during the 3rd inning most of the time. This graph lets us know that, outside the outlier of the third inning, the back 3rd of the game was where bunts were common. Which makes sense, in close, late games, bunts may be valuable.  
+The next graph is to show bunts by inning. This gives a feel of when bunting is most common for players. I initially expected it to be very populated at the 7-9th inning mark. However there is a very notable spike in the 3rd inning. This is due to the National League requiring pitchers to hit pre 2022. And as stated before, pitchers bunted way more than other players. They were at the bottom of the line up which would come around during the 3rd inning most of the time. This graph lets us know that, outside the outlier of the third inning, the back 3rd of the game was where bunts were common. Which makes sense, in close, late games, bunts may be valuable.   
 
+I followed these graphs with scenario specific graphs to see how bunting effects WPA 
 
+<p align="center" style="text-align:center;">  
+<img width="1189" height="590" alt="image" src="https://github.com/user-attachments/assets/481c3f65-aafd-4a33-8a37-199296e3c079" />  
+</p>  
 
+This plot contains 3 of the most common times to bunt, as well as a fourth scenario. The only increase to WPA is in the runner on second and zero outs base out state. This is most likely due to advancing the runner to 3rd on a successful bunt. The lowest WPA is with our runner on first, one out bar. This is most likely due to double plays being turned more frequently off these bunts, and ending the inning. 
 
+Even though non-bunts decrease WPA, this graph demonstrates that bunting tends to plummet the batting teams WPA way more than not bunting.   
 
+<p align="center" style="text-align:center;">  
+    <img width="1189" height="590" alt="image" src="https://github.com/user-attachments/assets/ea537a4a-3a5f-4798-b52c-87aead105ed3" />
+</p>  
+This graph shows that bunting actually can help score runs in the right scenarios. With runners on first and second, a sac bunt will advance them, and potentially leading to 2 further runs at the cost of an out. But this is the core issue, it costs an out. Even though run percentage is high, your opponent could still outscore you in less outs.    
