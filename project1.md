@@ -32,7 +32,9 @@ The most important variable to this project is the home teams WPA. This number i
 For cleaning my data, all I needed to do was drop all null values. This was simply done with `df.dropna()`  
 Next, to prepare my data, I created a state before variable to see all of the 24 base out states in one variable, rather than two.  
 `df['state_before'] = df['base_state_before'].astype(str) + "-" + df['outs_before'].astype(str)`  
+
 Then I checked the home teams wpa with `print(df[['home_team_wpa']].head(10))` then compared these values to the ones listed on baseball reference. After finding that they matched I knew my WPA was accurate.  
+
 Finally, I created a batting_team_wpa variable, rather than using the home teams wpa. To do this I check if it is the top of the inning, if it is we flip the sign of the home teams wpa, if not leave it as is.  
 `df['batting_team_wpa'] = df.apply(
     lambda row: row['home_team_wpa']
