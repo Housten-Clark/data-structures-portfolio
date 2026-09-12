@@ -90,11 +90,11 @@ Being limited by time constrained me to not downloading every regular season for
 
 AI DISCLAMER: To be transparent, I used Claude to write the code for creating my dataframe. It pulled the data from the api and put them into a csv for me. However the graphs are my own.  
 
-    References
-[GitHub MLB API wrapper](https://github.com/toddrob99/MLB-StatsAPI)
+_References_
+[GitHub MLB API wrapper](https://github.com/toddrob99/MLB-StatsAPI)    
 [Baseball Reference](https://www.baseball-reference.com/)
 
-    Code repository
-
+_Code repository_   
+[link](https://github.com/Housten-Clark/Project1)   
 
 
