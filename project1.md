@@ -75,7 +75,11 @@ Even though non-bunts decrease WPA, this graph demonstrates that bunting tends t
 </p>  
 This graph shows that bunting actually can help score runs in the right scenarios. With runners on first and second, a sac bunt will advance them, and potentially leading to 2 further runs at the cost of an out. But this is the core issue, it costs an out. Even though run percentage is high, your opponent could still outscore you in less outs.  
 
-<img width="776" height="590" alt="image" src="https://github.com/user-attachments/assets/8e879ef3-e262-42dd-ab7d-b0fc347e6e6e" />
-<img width="776" height="590" alt="image" src="https://github.com/user-attachments/assets/96d23e70-e318-42de-af60-84c13fc1edeb" />
+<p align="center" style="text-align:center;">  
+    <img width="776" height="590" alt="image" src="https://github.com/user-attachments/assets/8e879ef3-e262-42dd-ab7d-b0fc347e6e6e" />
+    <img width="776" height="590" alt="image" src="https://github.com/user-attachments/assets/96d23e70-e318-42de-af60-84c13fc1edeb" />
+</p>  
+
+These final two graphs demonstrate the differences in WPA between bunting and not bunting. Ignoring the obvious outliers with very small samples, the most notable square is the runners on first and second with no outs. Bunting increase a teams WPA very very slightly. Where as hitting decreases the WPA very slightly. We continue to see the double play trend with the 1 out runner on first for bunting, as it decreases the WPA. 
 
 
