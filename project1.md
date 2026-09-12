@@ -41,5 +41,13 @@ Finally, I created a batting_team_wpa variable, rather than using the home teams
     if not row['is_top_inning']
     else -row['home_team_wpa'],
     axis=1
-)`
+)`  
+
+**Data visualization**  
+
+In order to get initial context for bunts in the MLB, I created two main graphs. One to track bunts over time, then another to track bunts per inning. 
+
+
+<img width="563" height="453" alt="image" src="https://github.com/user-attachments/assets/0b09d8dc-192d-4d57-ac6c-d5fa855e7187" />
+
 
