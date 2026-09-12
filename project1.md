@@ -27,3 +27,17 @@ The main data set used for this project is the [Todd rob MLB API GitHub wrapper]
 
 The most important variable to this project is the home teams WPA. This number is calculated by finding the difference between a team's chance of winning right after a specific play and their chance of winning right before that play. Using this we can see if the bunt helped a team or not. 
 
+**Data cleaning and prep**  
+
+For cleaning my data, all I needed to do was drop all null values. This was simply done with `df.dropna()`  
+Next, to prepare my data, I created a state before variable to see all of the 24 base out states in one variable, rather than two.  
+`df['state_before'] = df['base_state_before'].astype(str) + "-" + df['outs_before'].astype(str)`  
+Then I checked the home teams wpa with `print(df[['home_team_wpa']].head(10))` then compared these values to the ones listed on baseball reference. After finding that they matched I knew my WPA was accurate.  
+Finally, I created a batting_team_wpa variable, rather than using the home teams wpa. To do this I check if it is the top of the inning, if it is we flip the sign of the home teams wpa, if not leave it as is.  
+`df['batting_team_wpa'] = df.apply(
+    lambda row: row['home_team_wpa']
+    if not row['is_top_inning']
+    else -row['home_team_wpa'],
+    axis=1
+)`
+
