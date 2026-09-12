@@ -5,7 +5,7 @@
 Bunting in the MLB has been a hot topic for the past 20 years, as we have seen a sharp decline in the number of bunts throughout each season. In baseball as a whole, you are racing one thing, the 27 out clock. bunting is a way in which you "spend" (or cost) your team an out in the hope of advancing a runner to hopefully score for your team. The problem to many MLB teams is that spending one of your 27 outs is almost never worth it. Coaches would much rather have players swing away and drive runners in without costing themselves an out. However, change in baseball usually comes relatively slow. For the most of its lifetime, coaches have been going off their "gut feeling" of what is right. But the one thing that changes the game continuously, is the statistics. In this project I hope to show why bunting has declined as a whole in the MLB at the highest stage, in the playoffs.
 
 **Data Description**
-The main data set used for this project is the [Todd rob MLB API GitHub wrapper](https://github.com/toddrob99/MLB-StatsAPI). I am currently not affiliated with any MLB, or Minor league baseball teams so I do not have direct access to the MLB's API. However this wrapper allows me to obtain data and perform the experiments necessary to answer the core question if bunting is worth it in the MLB. I have pulled every at bat from the past 20 years of playoff games in the MLB, put them into a csv and used as a data frame to answer our question. This data set contains a wide variety of entries, but for this project we are only concerned with 18 variables. Those being contained in the list below: 
+The main data set used for this project is the [Todd rob MLB API GitHub wrapper](https://github.com/toddrob99/MLB-StatsAPI). I am currently not affiliated with any MLB, or Minor league baseball teams so I do not have direct access to the MLB's API. However this wrapper allows me to obtain data and perform the experiments necessary to answer the core question if bunting is worth it in the MLB. I have pulled every at bat from the past 20 years of playoff games in the MLB, put them into a csv and used as a data frame to answer our question. Why playoff games? Teams care about winning every playoff game, where as some regular season games are not as meaningful. As well as downloading every game in the past 20 years would have taken 15 hours straight. This data set contains a wide variety of entries, but for this project we are only concerned with 18 variables. Those being contained in the list below: 
 - season for a general time frame
 -  game_pk to categorize each game
 -   innings
@@ -45,9 +45,10 @@ Finally, I created a batting_team_wpa variable, rather than using the home teams
 
 **Data visualization**  
 
-In order to get initial context for bunts in the MLB, I created two main graphs. One to track bunts over time, then another to track bunts per inning. 
+In order to get initial context for bunts in the MLB, I created two main graphs. One to track bunts over time, then another to track bunts per inning.
 
 
-<img width="563" height="453" alt="image" src="https://github.com/user-attachments/assets/0b09d8dc-192d-4d57-ac6c-d5fa855e7187" />
+<img width="563" height="453" alt="image" src="https://github.com/user-attachments/assets/0b09d8dc-192d-4d57-ac6c-d5fa855e7187" />  
+As we can see there is a decline in bunting over the past 20 years of playoff games. There is a very sharp decrease around 2019-2020, as well as seemingly bunting increasing again recently. At first I thought the decrease in 2020 was because the pandemic. However there were actually more games played than a regular postseason as the league expanded the bracket to 16 teams. However they also implemented a universal designated hitter for pitchers at the time. Meaning pitchers were not hitting, and therefore not bunting as much. (Pitchers tend to sac bunt way more than other players as they are worse hitters usually). 
 
 
