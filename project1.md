@@ -47,9 +47,9 @@ Finally, I created a batting_team_wpa variable, rather than using the home teams
 
 In order to get initial context for bunts in the MLB, I created two main graphs. One to track bunts over time, then another to track bunts per inning.
 
-<p align=center>
+<p align="center" style="text-align:center;">
     <img width="563" height="453" alt="image" src="https://github.com/user-attachments/assets/0b09d8dc-192d-4d57-ac6c-d5fa855e7187" />  
-</p>
+</p>  
 
 As we can see there is a decline in bunting over the past 20 years of playoff games. There is a very sharp decrease around 2019-2020, as well as seemingly bunting increasing again recently. At first I thought the decrease in 2020 was because the pandemic. However there were actually more games played than a regular postseason as the league expanded the bracket to 16 teams. However they also implemented a universal designated hitter for pitchers at the time. Meaning pitchers were not hitting, and therefore not bunting as much. (Pitchers tend to sac bunt way more than other players as they are worse hitters usually). 
 
