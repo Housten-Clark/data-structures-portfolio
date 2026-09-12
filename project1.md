@@ -53,6 +53,14 @@ In order to get initial context for bunts in the MLB, I created two main graphs.
 
 As we can see there is a decline in bunting over the past 20 years of playoff games. There is a very sharp decrease around 2019-2020, as well as seemingly bunting increasing again recently. At first I thought the decrease in 2020 was because the pandemic. However there were actually more games played than a regular postseason as the league expanded the bracket to 16 teams. However they also implemented a universal designated hitter for pitchers at the time. Meaning pitchers were not hitting, and therefore not bunting as much. (Pitchers tend to sac bunt way more than other players as they are worse hitters usually). 
 
-</p> 
+</p>   
+
+<p align="center" style="text-align:center;">  
+    <img width="571" height="432" alt="image" src="https://github.com/user-attachments/assets/aaa3c6ac-c827-4359-bba4-b8b1a23a3476" />
+</p>  
+The next graph is to show bunts by inning. This gives a feel of when bunting is most common for players. I initially expected it to be very populated at the 7-9th inning mark. However there is a very notable spike in the 3rd inning. This is due to the National League requiring pitchers to hit pre 2022. And as stated before, pitchers bunted way more than other players. They were at the bottom of the line up which would come around during the 3rd inning most of the time. This graph lets us know that, outside the outlier of the third inning, the back 3rd of the game was where bunts were common. Which makes sense, in close, late games, bunts may be valuable.  
+
+
+
 
 
