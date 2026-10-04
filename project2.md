@@ -75,7 +75,34 @@ Next we're going to get a feel for 4th down conversions in the NFL. Looking at c
  <img width="691" height="430" alt="image" src="https://github.com/user-attachments/assets/1fa17a86-aa93-4feb-b817-91a28af9baf1" />  
 
  <p align="center" style="text-align:center;">
- <img width="700" height="430" alt="image" src="https://github.com/user-attachments/assets/3c826af7-00f5-45a5-a200-90f6352bdc95" />
+ <img width="700" height="430" alt="image" src="https://github.com/user-attachments/assets/3c826af7-00f5-45a5-a200-90f6352bdc95" />    
+
+ These graphs show what we assume is true in the NFL. Teams convert more when they are close to the first down, and close to the opponents goaline. Notably, teams start going for it more and more as the seasons progress. There is about a 6% increase from 2017-2021.  
+
+ **Prepping for the models**  
+
+ Before creating any machine learning models, we need to prepare our data for them. First, we must split our data. Usually you would split on a percentage of 80/20, however for this project I split by season. We train on the older seasons (2015-2022) and test on the newest seasons (2023-2024). This mimics predicting the future, and it makes sure plays from the same game never end up in both the training and testing data. The data is split with this code:  
+ `train_df = df.loc[df["season"] <= 2022]
+test_df = df.loc[df["season"] >= 2023]`  
+
+Then we create our test and training variables with this:  
+`
+X_trn = train_df[feature_cols]  
+`
+`
+y_trn = train_df["converted"]  
+`
+`
+X_tst = test_df[feature_cols]  
+`
+`
+y_tst = test_df["converted"]  
+`  
+
+Finally, we check if any game slipped into both of the datasets:  
+
+`print("Games in both sets:", len(set(train_df["game_id"]) & set(test_df["game_id"])))`  
+
 
 
 
