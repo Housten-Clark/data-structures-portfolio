@@ -112,14 +112,18 @@ Next I create a baseline to test our models against later. A baseline is the sco
 Logistic regression works best when features are on a similar scale, so we standardize them first. We learn the scaling (mean and spread) from the training data only and then apply it to the test data, so no test information leaks in and spoils the results.
 
 `
-scaler = StandardScaler()
-X_trn_scaled = scaler.fit_transform(X_trn)   # learn the scaling from training data only
-X_tst_scaled = scaler.transform(X_tst)       # apply the same scaling to the test data
+scaler = StandardScaler()  
+`
+`  
+X_trn_scaled = scaler.fit_transform(X_trn)  
+`
+`  
+X_tst_scaled = scaler.transform(X_tst)
 `
 
 Then we run our logistic regression, and get the following result.
 
-The model correctly predicted a situation would lead to a fourth down conversion 64% of the time. Of all the plays, the model caught 81% of the ones that were actually converted. The model also predicted failed correctly 67% of the time, and only caught 46% of the failed plays.  
+The model correctly predicted a situation would lead to a fourth down conversion 64% of the time. Of all the plays, the model caught 81% of the ones that were actually converted. The model also predicted failed correctly 67% of the time, and only caught 46% of the failed plays. 
 
 
 
