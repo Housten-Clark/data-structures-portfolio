@@ -56,4 +56,29 @@ Next we see if there are any empty columns:
 This returned that there were no empty columns, but to be safe we still drop all empty columns.  
 `df = df.dropna().reset_index(drop=True)`  
 
+**Visualizations**  
+Before we start creating any models, we have to look at a few things. 
+
+First off, lets look at our class balance.  
+
+<p align="center" style="text-align:center;">
+    <img width="472" height="372" alt="image" src="https://github.com/user-attachments/assets/dfd58df5-2ff5-482d-8736-4a7648224bc2" />  
+
+Looks like our classes are pretty balanced, with a conversion rate of 52.2%.  
+
+Next we're going to get a feel for 4th down conversions in the NFL. Looking at conversions by how many yards to the first down marker, field position, and when teams went for it the most by year.  
+
+<p align="center" style="text-align:center;">
+ <img width="691" height="430" alt="image" src="https://github.com/user-attachments/assets/2b06adc4-c4b8-4c59-98e1-3a0ffe71e134" />  
+
+<p align="center" style="text-align:center;">
+ <img width="691" height="430" alt="image" src="https://github.com/user-attachments/assets/1fa17a86-aa93-4feb-b817-91a28af9baf1" />  
+
+ <p align="center" style="text-align:center;">
+ <img width="700" height="430" alt="image" src="https://github.com/user-attachments/assets/3c826af7-00f5-45a5-a200-90f6352bdc95" />
+
+
+
+
+
 
