@@ -122,6 +122,7 @@ X_tst_scaled = scaler.transform(X_tst)       # apply the same scaling to the tes
 
 Then we run our logistic regression, and get the following result.
 
+```text
               precision    recall  f1-score   support
 
       Failed       0.67      0.46      0.54       750
@@ -129,7 +130,8 @@ Then we run our logistic regression, and get the following result.
 
     accuracy                           0.65      1648
    macro avg       0.65      0.63      0.63      1648
-weighted avg       0.65      0.65      0.64      1648  
+weighted avg       0.65      0.65      0.64      1648
+```
 
 The model correctly predicted a situation would lead to a fourth down conversion 64% of the time. Of all the plays, the model caught 81% of the ones that were actually converted. The model also predicted failed correctly 67% of the time, and only caught 46% of the failed plays. 
 
