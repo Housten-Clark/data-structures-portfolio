@@ -213,7 +213,11 @@ Overall, the decision tree gives us a pretty intuitive result:
 4. **Time remaining can change the prediction in certain situations.**
 5. **Long-yardage fourth downs are much more likely to be predicted as failures.**
 
-The tree gives us a simple way to visualize how multiple game situations work together to predict a fourth-down conversion.
+The tree gives us a simple way to visualize how multiple game situations work together to predict a fourth-down conversion. 
+
+### Best Path to Take
+
+The best path through the tree starts with 2.5 yards or fewer to go, where the model predicts a conversion. From there, being within 20 yards of the opponent's goal line continues to favor a conversion. Overall, the tree suggests that short-yardage situations, especially near the goal line, are the best situations to go for it on fourth down.
 
 
 
