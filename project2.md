@@ -88,13 +88,16 @@ test_df = df.loc[df["season"] >= 2023]`
 Then we create our test and training variables with this:  
 `
 X_trn = train_df[feature_cols]  
-`
+`  
+
 `
 y_trn = train_df["converted"]  
-`
+`  
+
 `
 X_tst = test_df[feature_cols]  
-`
+`  
+
 `
 y_tst = test_df["converted"]  
 `  
@@ -102,6 +105,33 @@ y_tst = test_df["converted"]
 Finally, we check if any game slipped into both of the datasets:  
 
 `print("Games in both sets:", len(set(train_df["game_id"]) & set(test_df["game_id"])))`  
+
+This results in zero games in both datasets, meaning we are good to go.  
+
+Next I create a baseline to test our models against later. A baseline is the score to beat. Our baseline is a "model" that always guesses the most common outcome from the training data. The baseline model always predicts converted, and gives us a baseline accuracy of 0.545. Meaning it correctly predicts a fourth down will be converted about 55% of the time. We are trying to beat this score with our models.  
+
+**Logistic Regression**  
+
+Logistic regression works best when features are on a similar scale, so we standardize them first. We learn the scaling (mean and spread) from the training data only and then apply it to the test data, so no test information leaks in and spoils the results
+
+`
+scaler = StandardScaler()  
+X_trn_scaled = scaler.fit_transform(X_trn)   # learn the scaling from training data only  
+X_tst_scaled = scaler.transform(X_tst)       # apply the same scaling to the test data  
+`
+
+Then we run our logistic regression, and get the following result.
+
+              precision    recall  f1-score   support
+
+      Failed       0.67      0.46      0.54       750
+   Converted       0.64      0.81      0.72       898
+
+    accuracy                           0.65      1648
+   macro avg       0.65      0.63      0.63      1648
+weighted avg       0.65      0.65      0.64      1648  
+
+The model correctly predicted a situation would lead to a fourth down conversion 64% of the time. Of all the plays, the model caught 81% of the ones that were actually converted. The model also predicted failed correctly 67% of the time, and only caught 46% of the failed plays. 
 
 
 
