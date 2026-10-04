@@ -22,3 +22,17 @@ The main dataset I used for this project is the nflready api, hosted at [this li
 - possession team timeouts remaining
 - win percentage
 - shotgun, is it a shotgun play?
+
+  **Data cleaning**
+  First off, we need to gather up only the plays we care about. Fourth downs that were not a kick or punt. This is done with the following code:
+  `# We only want 4th down plays where the team actually went for it (a run or a pass)
+fourth = pbp.loc[(pbp["down"] == 4) & (pbp["play_type"].isin(["run", "pass"]))]
+print(f"All 4th-down run/pass plays: {len(fourth):,}")
+
+# Filter for plays with a clear result, converted or failed
+fourth = fourth.loc[(fourth["fourth_down_converted"] + fourth["fourth_down_failed"]) == 1]
+print(f"With a clear converted/failed result: {len(fourth):,}")
+
+# Our target variable
+fourth = fourth.copy()
+fourth["converted"] = fourth["fourth_down_converted"].astype(int)`
