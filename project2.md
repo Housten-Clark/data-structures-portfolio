@@ -217,7 +217,54 @@ The tree gives us a simple way to visualize how multiple game situations work to
 
 ### Best Path to Take
 
-The best path through the tree starts with 2.5 yards or fewer to go, where the model predicts a conversion. From there, being within 20 yards of the opponent's goal line continues to favor a conversion. Overall, the tree suggests that short-yardage situations, especially near the goal line, are the best situations to go for it on fourth down.
+The best path through the tree starts with 2.5 yards or fewer to go, where the model predicts a conversion. From there, being within 20 yards of the opponent's goal line continues to favor a conversion. Overall, the tree suggests that short-yardage situations, especially near the goal line, are the best situations to go for it on fourth down.  
+
+## Comparing the Models
+
+| Model | Accuracy | Precision | Recall | F1 |
+|---|---:|---:|---:|---:|
+| Baseline | 0.545 | 0.545 | 1.000 | 0.705 |
+| Logistic Regression | 0.650 | 0.642 | 0.808 | 0.716 |
+| Decision Tree (tuned) | 0.643 | 0.675 | 0.665 | 0.670 |
+
+The Logistic Regression model performed the best overall. It had the highest accuracy at 65.0%, the highest recall at 80.8%, and the highest F1 score at 0.716. The Decision Tree had slightly lower accuracy at 64.3%, but it had the highest precision at 67.5%. Both models performed better than the baseline accuracy of 54.5%.
+
+Overall, Logistic Regression is the better model for predicting fourth-down conversions, while the Decision Tree is more useful for understanding which situations lead to a conversion.  
+
+### Confusion Matrices
+
+The confusion matrices show how each model's predictions compare to the actual fourth-down outcomes.
+
+![Confusion Matrices](https://github.com/user-attachments/assets/a130be78-84da-44be-a80d-a8a48a1c8ca6)  
+
+![Confusion Matrices](https://github.com/user-attachments/assets/303b10e4-7045-4e42-8ad0-fe759279d227)
+
+
+Logistic Regression correctly identified **726 of 898 converted plays (81%)**, but it only correctly identified **345 of 750 failed plays (46%)**. This shows that the model is much better at identifying conversions than failures.
+
+The Decision Tree correctly identified **597 of 898 converted plays (66%)** and **462 of 750 failed plays (62%)**. This makes the Decision Tree more balanced between predicting conversions and failures.
+
+Overall, Logistic Regression is better at finding conversions, while the Decision Tree does a better job of identifying failed fourth downs. This matches the model comparison, where Logistic Regression had the higher overall accuracy and recall, while the Decision Tree had higher precision.  
+
+
+### What the Model Learned
+
+![What the models learned](https://github.com/user-attachments/assets/841353d3-e4cb-4aee-972c-e93acff5860e)
+
+The Logistic Regression coefficients show which variables had the biggest influence on the model's predictions. The largest effects came from `ydstogo` and `yardline_100`.
+
+`ydstogo` had the largest negative coefficient, meaning that as the number of yards needed for a first down increases, the likelihood of a conversion decreases. This makes sense because longer fourth downs are harder to convert.
+
+`yardline_100` had the largest positive coefficient. Since this variable measures the distance to the opponent's goal line, a smaller value means the offense is closer to scoring. The model therefore found field position to be an important factor when predicting fourth-down conversions.
+
+Other variables, such as time remaining, win probability, and timeouts, had smaller effects on the prediction. Overall, the model learned that distance to the first down and field position were the most important factors in predicting whether a fourth down would be converted.  
+
+## Most important factors in the model
+
+![Most important factors](https://github.com/user-attachments/assets/f89b56f3-20f7-4125-9cfc-b14d5fab3627)  
+
+`ydstogo` seems to the be most important feature in the models. Which makes sense because most first down conversions come from 4th and 1, or 4th and 2s. 
+
 
 
 
