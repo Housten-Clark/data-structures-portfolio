@@ -3,7 +3,7 @@
 
 **Problem Definition**   
 
-Fourth down conversions are some of the most exciting and tense moment in football. Seeing your team convert in a high pressure situation to win the game is a testament to show how hype football can be. However, is going for it on 4th actually worth it? In which situation does going for it on 4th down improve the offensive team's chances of winning the game? In this project I hope to answer this question. Using two machine learning models to find the best situation to go for it on fourth down.   
+Fourth down conversions are some of the most exciting and tense moment in football. Seeing your team convert in a high pressure situation to win the game is a testament to show how hype football can be. However, is going for it on 4th actually worth it? In which situation can we predict a conversion on 4th down? In this project I hope to answer this question. Using two machine learning models to find the best situation to go for it on fourth down.   
 
 **Data description**  
 The main dataset I used for this project is the nflready api, hosted at [this link](https://github.com/nflverse/nflreadpy). I am looking at games in the past 10 years, from the 2015-2025 seasons. The whole data set is far to large and is not needed for most of the project. So we only pull out the columns that we need. These being:  
@@ -132,6 +132,22 @@ Then we run our logistic regression, and get the following result.
 weighted avg       0.65      0.65      0.64      1648  
 
 The model correctly predicted a situation would lead to a fourth down conversion 64% of the time. Of all the plays, the model caught 81% of the ones that were actually converted. The model also predicted failed correctly 67% of the time, and only caught 46% of the failed plays. 
+
+**Decesion tree**
+
+Next we create a decision tree to find which situation is best to go for it on fourth down. We start by creating a decision tree that is not tuned yet. 
+
+```python
+# A basic tree with no tuning
+tree_default = DecisionTreeClassifier(random_state=42)
+tree_default.fit(X_trn, y_trn)
+
+print(f"Tree depth: {tree_default.get_depth()}")
+print(f"Training accuracy: {tree_default.score(X_trn, y_trn):.3f}")
+print(f"Testing accuracy:  {tree_default.score(X_tst, y_tst):.3f}")
+```
+
+
 
 
 
