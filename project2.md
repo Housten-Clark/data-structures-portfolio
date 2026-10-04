@@ -146,10 +146,11 @@ print(f"Training accuracy: {tree_default.score(X_trn, y_trn):.3f}")
 print(f"Testing accuracy:  {tree_default.score(X_tst, y_tst):.3f}")
 ```
 
+This gave a training accuracy of 1.00, and testing accuracy of .542. Meaning we have overfit. The tree memorized the data rather than seeking patterns. Let's find a better tree depth.  
 
+We can't pick the depth by looking at the test set (that would be cheating). Instead we validate inside the training data, for each of the last three training seasons (2020, 2021, 2022), we train on the seasons before it and check accuracy on that season. Then we average the three.  
 
+<p align="center" style="text-align:center;">
+ <img width="700" height="430" alt="image" src="https://github.com/user-attachments/assets/f2a78508-d23d-4458-b447-759398044b67" />  
 
-
-
-
-
+ This graph shows that we should use a depth of 3
