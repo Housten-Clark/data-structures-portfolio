@@ -86,21 +86,12 @@ Next we're going to get a feel for 4th down conversions in the NFL. Looking at c
 test_df = df.loc[df["season"] >= 2023]`  
 
 Then we create our test and training variables with this:  
-`
-X_trn = train_df[feature_cols]  
-`  
-
-`
-y_trn = train_df["converted"]  
-`  
-
-`
-X_tst = test_df[feature_cols]  
-`  
-
-`
-y_tst = test_df["converted"]  
-`  
+```python
+X_trn = train_df[feature_cols]
+y_trn = train_df["converted"]
+X_tst = test_df[feature_cols]
+y_tst = test_df["converted"]
+```
 
 Finally, we check if any game slipped into both of the datasets:  
 
