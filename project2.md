@@ -83,14 +83,14 @@ Next we're going to get a feel for 4th down conversions in the NFL. Looking at c
 
 Before creating any machine learning models, we need to prepare our data for them. First, we must split our data. Usually you would split on a percentage of 80/20, however for this project I split by season. We train on the older seasons (2015-2022) and test on the newest seasons (2023-2024). This mimics predicting the future, and it makes sure plays from the same game never end up in both the training and testing data. The data is split with this code:
 
-```python
+```
 train_df = df.loc[df["season"] <= 2022]
 test_df = df.loc[df["season"] >= 2023]
 ```
 
 Then we create our test and training variables with this:
 
-```python
+```
 X_trn = train_df[feature_cols]
 y_trn = train_df["converted"]
 X_tst = test_df[feature_cols]
@@ -99,7 +99,7 @@ y_tst = test_df["converted"]
 
 Finally, we check if any game slipped into both of the datasets:
 
-```python
+```
 print("Games in both sets:", len(set(train_df["game_id"]) & set(test_df["game_id"])))
 ```
 
@@ -111,7 +111,7 @@ Next I create a baseline to test our models against later. A baseline is the sco
 
 Logistic regression works best when features are on a similar scale, so we standardize them first. We learn the scaling (mean and spread) from the training data only and then apply it to the test data, so no test information leaks in and spoils the results.
 
-```python
+```
 scaler = StandardScaler()
 X_trn_scaled = scaler.fit_transform(X_trn)   # learn the scaling from training data only
 X_tst_scaled = scaler.transform(X_tst)       # apply the same scaling to the test data
@@ -136,7 +136,7 @@ The model correctly predicted a situation would lead to a fourth down conversion
 
 Next we create a decision tree to find which situation is best to go for it on fourth down. We start by creating a decision tree that is not tuned yet.
 
-```python
+```
 # A basic tree with no tuning
 tree_default = DecisionTreeClassifier(random_state=42)
 tree_default.fit(X_trn, y_trn)
