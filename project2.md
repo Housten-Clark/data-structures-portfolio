@@ -154,4 +154,66 @@ Instead, we validate within the training data. For each of the last three traini
 
 The graph shows that a **maximum tree depth of 3** is the best choice. At depth 3, the validation accuracy is at its highest level before beginning to decrease as the tree becomes deeper. Meanwhile, training accuracy continues to increase, which is a sign that deeper trees begin to overfit the training data.
 
-Therefore, we will use a **maximum tree depth of 3** for our final decision tree.
+Therefore, we will use a **maximum tree depth of 3** for our final decision tree.  
+
+## Final Decision Tree Results
+
+After choosing a maximum tree depth of 3, we ran the final decision tree on the test data.
+
+The model produced the following results:
+
+| Outcome | Precision | Recall | F1-Score | Support |
+|:---|---:|---:|---:|---:|
+| Failed | 0.61 | 0.62 | 0.61 | 750 |
+| Converted | 0.67 | 0.66 | 0.67 | 898 |
+
+The decision tree achieved an overall **accuracy of 64%**.
+
+For fourth downs that **failed**, the model had a precision of **61%** and a recall of **62%**. This means that when the model predicted a fourth down would fail, it was correct about 61% of the time. It also correctly identified about 62% of the fourth downs that actually failed.
+
+For fourth downs that were **converted**, the model had a precision of **67%** and a recall of **66%**. This means that when the model predicted a conversion, it was correct about 67% of the time. It also correctly identified about 66% of the fourth downs that actually converted.
+
+Overall, the model had an **F1-score of 0.64** and an accuracy of **64%**, which is better than our baseline accuracy of **54.5%**. This shows that the decision tree was able to learn useful patterns about when teams are more likely to convert on fourth down.  
+
+### What This Means
+
+The decision tree improved on our baseline by about **9.5 percentage points**, showing that factors such as yards to go, field position, time remaining, score differential, and other pre-snap information provide useful information for predicting fourth-down conversions.  
+
+## Visualizing the Decision Tree
+
+![Tuned Decision Tree](<img width="1990" height="890" alt="image" src="https://github.com/user-attachments/assets/99eae58c-9b57-4302-9ebf-6bc1bc51b4c9" />)  
+
+The decision tree helps us visualize the situations that the model believes are most important when predicting whether a fourth down will be converted.
+
+The **first and most important split is yards to go**. The tree first separates plays where the offense has **2.5 yards or fewer to go** from plays where the offense has more than 2.5 yards to go. This shows that the distance needed for a first down is the most important factor in the model.
+
+### Short Yardage Situations
+
+When a team has **2.5 yards or fewer to go**, the model generally predicts a **conversion**.
+
+The tree then looks at field position. If the offense is within about **20 yards of the opponent's goal line**, the model continues to predict a conversion. This makes sense because teams are more likely to convert short-yardage situations, and teams may also be more aggressive when they are close to scoring.
+
+For other short-yardage situations, the tree considers **time remaining in the game**. This shows that game situation can also influence the model's prediction.
+
+### Longer Yardage Situations
+
+When a team has more than **2.5 yards to go**, the tree becomes more likely to predict a **failed conversion**.
+
+For teams with between roughly **3 and 8 yards to go**, the model looks at the amount of time remaining. If there are only about **76 seconds or less remaining**, the model predicts a failure.
+
+For teams with more than **8.5 yards to go**, the model continues to predict a failure. It then makes another split at **15.5 yards to go**, but both resulting groups are still predicted to fail.
+
+### What the Tree Tells Us
+
+Overall, the decision tree gives us a pretty intuitive result:
+
+1. **Yards to go is the most important factor.**
+2. **Short-yardage situations are more likely to be converted.**
+3. **Field position becomes important in some short-yardage situations.**
+4. **Time remaining can change the prediction in certain situations.**
+5. **Long-yardage fourth downs are much more likely to be predicted as failures.**
+
+The tree gives us a simple way to visualize how multiple game situations work together to predict a fourth-down conversion.
+
+
+
