@@ -121,7 +121,7 @@ X_trn_scaled = scaler.fit_transform(X_trn)
 X_tst_scaled = scaler.transform(X_tst)
 `
 
-Then we run our logistic regression, and get the following result.
+Then we run our logistic regression, we got an accuarcy of 0.67 for failed, and 0.64 for converted. We also got a recall of 0.46 for failed, and 0.81 for converted. 
 
 The model correctly predicted a situation would lead to a fourth down conversion 64% of the time. Of all the plays, the model caught 81% of the ones that were actually converted. The model also predicted failed correctly 67% of the time, and only caught 46% of the failed plays. 
 
