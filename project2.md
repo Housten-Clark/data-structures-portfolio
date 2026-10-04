@@ -181,7 +181,7 @@ The decision tree improved on our baseline by about **9.5 percentage points**, s
 
 ## Visualizing the Decision Tree
 
-![Tuned Decision Tree](<img width="1990" height="890" alt="image" src="https://github.com/user-attachments/assets/99eae58c-9b57-4302-9ebf-6bc1bc51b4c9" />)  
+![Tuned Decision Tree](https://github.com/user-attachments/assets/99eae58c-9b57-4302-9ebf-6bc1bc51b4c9)  
 
 The decision tree helps us visualize the situations that the model believes are most important when predicting whether a fourth down will be converted.
 
