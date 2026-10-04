@@ -142,4 +142,16 @@ We look at conversions based on:
 
 These graphs show what we would expect to be true in the NFL.
 
-Teams convert more often when they are **close to the first-down marker**, and we see that fourth down conversion attempts have gone up over the years. 
+Teams convert more often when they are **close to the first-down marker**, and we see that fourth down conversion attempts have gone up over the years.  
+
+### Choosing the Tree Depth
+
+We can't pick the depth by looking at the test set because that would be using the test data to tune our model.
+
+Instead, we validate within the training data. For each of the last three training seasons (**2020, 2021, and 2022**), we train on the seasons before it and check the accuracy on that season. We then average the three validation accuracies.
+
+![Accuracy by Tree Depth](https://github.com/user-attachments/assets/f2a78508-d23d-4458-b447-759398044b67)
+
+The graph shows that a **maximum tree depth of 3** is the best choice. At depth 3, the validation accuracy is at its highest level before beginning to decrease as the tree becomes deeper. Meanwhile, training accuracy continues to increase, which is a sign that deeper trees begin to overfit the training data.
+
+Therefore, we will use a **maximum tree depth of 3** for our final decision tree.
