@@ -26,10 +26,12 @@ The main dataset I used for this project is the nflready api, hosted at [this li
   **Data cleaning**
   First off, we need to gather up only the plays we care about. Fourth downs that were not a kick or punt. This is done with the following code:  
   `fourth = pbp.loc[(pbp["down"] == 4) & (pbp["play_type"].isin(["run", "pass"]))]`   
-   `print(f"All 4th-down run/pass plays: {len(fourth):,}")`  
-  The we will filter for plays that have a clear result of converted, or failed.  
+   `print(f"All 4th-down run/pass plays: {len(fourth):,}")`
+  
+  The we will filter for plays that have a clear result of converted, or failed.
 `fourth = fourth.loc[(fourth["fourth_down_converted"] + fourth["fourth_down_failed"]) == 1]`  
- `print(f"With a clear converted/failed result: {len(fourth):,}")`  
+ `print(f"With a clear converted/failed result: {len(fourth):,}")`
+
    Finally, we get our target variable    
 `fourth = fourth.copy()`  
  `fourth["converted"] = fourth["fourth_down_converted"].astype(int)`
