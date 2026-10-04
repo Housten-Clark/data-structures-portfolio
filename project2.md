@@ -38,14 +38,14 @@ The main dataset I used for this project is the nflready api, hosted at [this li
 
 This gave us a total of 6,625 fourth down plays to work with. Next we choose variables to be used before the snap, to see if we can predict when a fourth down is "worth it" to a team. Using other variables like yards gained, EPA, and win probability added would be data leakage. As these variables would not be available to our model before the snap. To do this we use the following code:  
 `  feature_cols = [  
-    "ydstogo",  
-    "yardline_100",  
-    "qtr",  
-    "game_seconds_remaining",  
-    "score_differential",  
-    "posteam_timeouts_remaining",  
-    "wp",  
-    "shotgun",  
+    "ydstogo", 
+    "yardline_100", 
+    "qtr", 
+    "game_seconds_remaining", 
+    "score_differential", 
+    "posteam_timeouts_remaining", 
+    "wp", 
+    "shotgun", 
 ]  
 df = fourth[["season", "game_id", "desc", "converted"] + feature_cols].copy()  
 df.head()`
