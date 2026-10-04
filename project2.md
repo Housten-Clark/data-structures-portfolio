@@ -79,19 +79,16 @@ Next we're going to get a feel for 4th down conversions in the NFL. Looking at c
 
  These graphs show what we assume is true in the NFL. Teams convert more when they are close to the first down, and close to the opponents goaline. Notably, teams start going for it more and more as the seasons progress. There is about a 6% increase from 2017-2021.  
 
- **Prepping for the models**  
+**Prepping for the models**
 
+Before creating any machine learning models, we need to prepare our data for them. First, we must split our data. Usually you would split on a percentage of 80/20, however for this project I split by season. We train on the older seasons (2015-2022) and test on the newest seasons (2023-2024). This mimics predicting the future, and it makes sure plays from the same game never end up in both the training and testing data. The data is split with this code:
 
- Before creating any machine learning models, we need to prepare our data for them. First, we must split our data. Usually you would split on a percentage of 80/20, however for this project I split by season. We train on the older seasons (2015-2022) and test on the newest seasons (2023-2024). This mimics predicting the future, and it makes sure plays from the same game never end up in both the training and testing data. The data is split with this code:  
-
- 
- ```python
+```python
 train_df = df.loc[df["season"] <= 2022]
 test_df = df.loc[df["season"] >= 2023]
 ```
 
-
-Then we create our test and training variables with this:  
+Then we create our test and training variables with this:
 
 ```python
 X_trn = train_df[feature_cols]
@@ -100,24 +97,25 @@ X_tst = test_df[feature_cols]
 y_tst = test_df["converted"]
 ```
 
+Finally, we check if any game slipped into both of the datasets:
 
-Finally, we check if any game slipped into both of the datasets:  
+```python
+print("Games in both sets:", len(set(train_df["game_id"]) & set(test_df["game_id"])))
+```
 
-`print("Games in both sets:", len(set(train_df["game_id"]) & set(test_df["game_id"])))`  
+This results in zero games in both datasets, meaning we are good to go.
 
-This results in zero games in both datasets, meaning we are good to go.  
+Next I create a baseline to test our models against later. A baseline is the score to beat. Our baseline is a "model" that always guesses the most common outcome from the training data. The baseline model always predicts converted, and gives us a baseline accuracy of 0.545. Meaning it correctly predicts a fourth down will be converted about 55% of the time. We are trying to beat this score with our models.
 
-Next I create a baseline to test our models against later. A baseline is the score to beat. Our baseline is a "model" that always guesses the most common outcome from the training data. The baseline model always predicts converted, and gives us a baseline accuracy of 0.545. Meaning it correctly predicts a fourth down will be converted about 55% of the time. We are trying to beat this score with our models.  
+**Logistic Regression**
 
-**Logistic Regression**  
+Logistic regression works best when features are on a similar scale, so we standardize them first. We learn the scaling (mean and spread) from the training data only and then apply it to the test data, so no test information leaks in and spoils the results.
 
-Logistic regression works best when features are on a similar scale, so we standardize them first. We learn the scaling (mean and spread) from the training data only and then apply it to the test data, so no test information leaks in and spoils the results
-
-`
-scaler = StandardScaler()  
-X_trn_scaled = scaler.fit_transform(X_trn)   # learn the scaling from training data only  
-X_tst_scaled = scaler.transform(X_tst)       # apply the same scaling to the test data  
-`
+```python
+scaler = StandardScaler()
+X_trn_scaled = scaler.fit_transform(X_trn)   # learn the scaling from training data only
+X_tst_scaled = scaler.transform(X_tst)       # apply the same scaling to the test data
+```
 
 Then we run our logistic regression, and get the following result.
 
@@ -132,11 +130,11 @@ Then we run our logistic regression, and get the following result.
 weighted avg       0.65      0.65      0.64      1648
 ```
 
-The model correctly predicted a situation would lead to a fourth down conversion 64% of the time. Of all the plays, the model caught 81% of the ones that were actually converted. The model also predicted failed correctly 67% of the time, and only caught 46% of the failed plays. 
+The model correctly predicted a situation would lead to a fourth down conversion 64% of the time. Of all the plays, the model caught 81% of the ones that were actually converted. The model also predicted failed correctly 67% of the time, and only caught 46% of the failed plays.
 
-**Decesion tree**
+**Decision Tree**
 
-Next we create a decision tree to find which situation is best to go for it on fourth down. We start by creating a decision tree that is not tuned yet. 
+Next we create a decision tree to find which situation is best to go for it on fourth down. We start by creating a decision tree that is not tuned yet.
 
 ```python
 # A basic tree with no tuning
@@ -147,7 +145,6 @@ print(f"Tree depth: {tree_default.get_depth()}")
 print(f"Training accuracy: {tree_default.score(X_trn, y_trn):.3f}")
 print(f"Testing accuracy:  {tree_default.score(X_tst, y_tst):.3f}")
 ```
-
 
 
 
