@@ -83,25 +83,25 @@ Next we're going to get a feel for 4th down conversions in the NFL. Looking at c
 
 Before creating any machine learning models, we need to prepare our data for them. First, we must split our data. Usually you would split on a percentage of 80/20, however for this project I split by season. We train on the older seasons (2015-2022) and test on the newest seasons (2023-2024). This mimics predicting the future, and it makes sure plays from the same game never end up in both the training and testing data. The data is split with this code:
 
-```
+`
 train_df = df.loc[df["season"] <= 2022]
 test_df = df.loc[df["season"] >= 2023]
-```
+`
 
 Then we create our test and training variables with this:
 
-```
+`
 X_trn = train_df[feature_cols]
 y_trn = train_df["converted"]
 X_tst = test_df[feature_cols]
 y_tst = test_df["converted"]
-```
+`
 
 Finally, we check if any game slipped into both of the datasets:
 
-```
+`
 print("Games in both sets:", len(set(train_df["game_id"]) & set(test_df["game_id"])))
-```
+`
 
 This results in zero games in both datasets, meaning we are good to go.
 
@@ -111,40 +111,22 @@ Next I create a baseline to test our models against later. A baseline is the sco
 
 Logistic regression works best when features are on a similar scale, so we standardize them first. We learn the scaling (mean and spread) from the training data only and then apply it to the test data, so no test information leaks in and spoils the results.
 
-```
+`
 scaler = StandardScaler()
 X_trn_scaled = scaler.fit_transform(X_trn)   # learn the scaling from training data only
 X_tst_scaled = scaler.transform(X_tst)       # apply the same scaling to the test data
-```
+`
 
 Then we run our logistic regression, and get the following result.
 
-```text
-              precision    recall  f1-score   support
+The model correctly predicted a situation would lead to a fourth down conversion 64% of the time. Of all the plays, the model caught 81% of the ones that were actually converted. The model also predicted failed correctly 67% of the time, and only caught 46% of the failed plays.  
 
-      Failed       0.67      0.46      0.54       750
-   Converted       0.64      0.81      0.72       898
 
-    accuracy                           0.65      1648
-   macro avg       0.65      0.63      0.63      1648
-weighted avg       0.65      0.65      0.64      1648
-```
-
-The model correctly predicted a situation would lead to a fourth down conversion 64% of the time. Of all the plays, the model caught 81% of the ones that were actually converted. The model also predicted failed correctly 67% of the time, and only caught 46% of the failed plays.
 
 **Decision Tree**
 
 Next we create a decision tree to find which situation is best to go for it on fourth down. We start by creating a decision tree that is not tuned yet.
 
-```
-# A basic tree with no tuning
-tree_default = DecisionTreeClassifier(random_state=42)
-tree_default.fit(X_trn, y_trn)
-
-print(f"Tree depth: {tree_default.get_depth()}")
-print(f"Training accuracy: {tree_default.score(X_trn, y_trn):.3f}")
-print(f"Testing accuracy:  {tree_default.score(X_tst, y_tst):.3f}")
-```
 
 This gave a training accuracy of 1.00, and testing accuracy of .542. Meaning we have overfit. The tree memorized the data rather than seeking patterns. Let's find a better tree depth.  
 
