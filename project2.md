@@ -81,19 +81,25 @@ Next we're going to get a feel for 4th down conversions in the NFL. Looking at c
 
  **Prepping for the models**  
 
+
  Before creating any machine learning models, we need to prepare our data for them. First, we must split our data. Usually you would split on a percentage of 80/20, however for this project I split by season. We train on the older seasons (2015-2022) and test on the newest seasons (2023-2024). This mimics predicting the future, and it makes sure plays from the same game never end up in both the training and testing data. The data is split with this code:  
+
+ 
  ```python
 train_df = df.loc[df["season"] <= 2022]
 test_df = df.loc[df["season"] >= 2023]
-```  
+```
+
 
 Then we create our test and training variables with this:  
+
 ```python
 X_trn = train_df[feature_cols]
 y_trn = train_df["converted"]
 X_tst = test_df[feature_cols]
 y_tst = test_df["converted"]
 ```
+
 
 Finally, we check if any game slipped into both of the datasets:  
 
