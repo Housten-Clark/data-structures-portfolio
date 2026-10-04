@@ -79,62 +79,113 @@ Next we're going to get a feel for 4th down conversions in the NFL. Looking at c
 
  These graphs show what we assume is true in the NFL. Teams convert more when they are close to the first down, and close to the opponents goaline. Notably, teams start going for it more and more as the seasons progress. There is about a 6% increase from 2017-2021.  
 
-**Prepping for the models**
+## Prepping for the Models
 
-Before creating any machine learning models, we need to prepare our data for them. First, we must split our data. Usually you would split on a percentage of 80/20, however for this project I split by season. We train on the older seasons (2015-2022) and test on the newest seasons (2023-2024). This mimics predicting the future, and it makes sure plays from the same game never end up in both the training and testing data. The data is split with this code:
+Before creating any machine learning models, we need to prepare our data for them.
 
-`
+First, we must split our data. Usually, you would split the data using a percentage such as 80/20. However, for this project, I split the data by season. We train on the older seasons (**2015–2022**) and test on the newest seasons (**2023–2024**).
+
+This mimics predicting the future, and it makes sure plays from the same game never end up in both the training and testing data.
+
+The data is split with this code:
+
+```python
 train_df = df.loc[df["season"] <= 2022]
 test_df = df.loc[df["season"] >= 2023]
-`
+```
 
-Then we create our test and training variables with this:
+Then we create our training and testing variables:
 
-`
+```python
 X_trn = train_df[feature_cols]
 y_trn = train_df["converted"]
+
 X_tst = test_df[feature_cols]
 y_tst = test_df["converted"]
-`
+```
 
-Finally, we check if any game slipped into both of the datasets:
+Finally, we check if any games accidentally ended up in both datasets:
 
-`
+```python
 print("Games in both sets:", len(set(train_df["game_id"]) & set(test_df["game_id"])))
-`
+```
 
-This results in zero games in both datasets, meaning we are good to go.
+This results in **zero games in both datasets**, meaning we are good to go.
 
-Next I create a baseline to test our models against later. A baseline is the score to beat. Our baseline is a "model" that always guesses the most common outcome from the training data. The baseline model always predicts converted, and gives us a baseline accuracy of 0.545. Meaning it correctly predicts a fourth down will be converted about 55% of the time. We are trying to beat this score with our models.
+### Baseline
 
-**Logistic Regression**
+Next, I create a baseline to test our models against later.
 
-Logistic regression works best when features are on a similar scale, so we standardize them first. We learn the scaling (mean and spread) from the training data only and then apply it to the test data, so no test information leaks in and spoils the results.
+A baseline is the score to beat. Our baseline is a "model" that always guesses the most common outcome from the training data.
 
-`
-scaler = StandardScaler()  
-`
-`  
-X_trn_scaled = scaler.fit_transform(X_trn)  
-`
-`  
+The baseline model always predicts **converted**, giving us a baseline accuracy of **0.545**. This means it correctly predicts a fourth-down conversion about **55% of the time**.
+
+We are trying to beat this score with our machine learning models.
+
+---
+
+## Logistic Regression
+
+Logistic regression works best when features are on a similar scale, so we standardize them first.
+
+We learn the scaling (mean and spread) from the training data only and then apply it to the test data. This prevents test information from leaking into the training process and spoiling the results.
+
+```python
+scaler = StandardScaler()
+
+X_trn_scaled = scaler.fit_transform(X_trn)
+
 X_tst_scaled = scaler.transform(X_tst)
-`
+```
 
-Then we run our logistic regression, we got an accuarcy of 0.67 for failed, and 0.64 for converted. We also got a recall of 0.46 for failed, and 0.81 for converted. This tells us that the model correctly predicted a situation would lead to a fourth down conversion 64% of the time. Of all the plays, the model caught 81% of the ones that were actually converted. The model also predicted failed correctly 67% of the time, and only caught 46% of the failed plays. 
+The logistic regression model achieved the following results:
 
+| Outcome   | Accuracy | Recall |
+| --------- | -------: | -----: |
+| Failed    |     0.67 |   0.46 |
+| Converted |     0.64 |   0.81 |
 
+This tells us that the model correctly predicted a situation would lead to a fourth-down conversion **64% of the time**.
 
-**Decision Tree**
+Of all the plays that actually resulted in a conversion, the model correctly identified **81%** of them.
 
-Next we create a decision tree to find which situation is best to go for it on fourth down. We start by creating a decision tree that is not tuned yet.
+The model also correctly predicted failed fourth downs **67% of the time**, but only caught **46% of the fourth downs that actually failed**.
 
+---
 
-This gave a training accuracy of 1.00, and testing accuracy of .542. Meaning we have overfit. The tree memorized the data rather than seeking patterns. Let's find a better tree depth.  
+## Decision Tree
 
-We can't pick the depth by looking at the test set (that would be cheating). Instead we validate inside the training data, for each of the last three training seasons (2020, 2021, 2022), we train on the seasons before it and check accuracy on that season. Then we average the three.  
+Next, we create a decision tree to find which situations are best for going for it on fourth down.
 
-<p align="center" style="text-align:center;">
- <img width="700" height="430" alt="image" src="https://github.com/user-attachments/assets/f2a78508-d23d-4458-b447-759398044b67" />  
+We start by creating a decision tree that is not tuned yet.
 
- This graph shows that we should use a depth of 3
+The initial tree gave us a:
+
+* **Training accuracy:** 1.00
+* **Testing accuracy:** 0.542
+
+This means the model is **overfitting**. The tree essentially memorized the training data rather than learning patterns that generalize to new data.
+
+So, we need to find a better tree depth.
+
+### Choosing the Tree Depth
+
+We can't pick the depth by looking at the test set because that would be using our test data to tune the model.
+
+Instead, we validate inside the training data.
+
+For each of the last three training seasons (**2020, 2021, and 2022**), we train on the seasons before it and then check the accuracy on that season. We then average the three validation accuracies.
+
+![Decision Tree Depth Validation](https://github.com/user-attachments/assets/f2a78508-d23d-4458-b447-759398044b67)
+
+The graph shows that a **maximum tree depth of 3** gives us the best validation performance.
+
+---
+
+## What the Data Shows
+
+These graphs show what we would expect to be true in the NFL.
+
+Teams are more likely to convert when they are **close to the first-down marker** and **close to the opponent's goal line**.
+
+Notably, teams also appear to be going for it more often as the seasons progress. There is about a **6% increase from 2017–2021**.
